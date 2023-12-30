@@ -1,0 +1,10 @@
+interface:
+  GetGroupNote:
+    path: '/v3/notesvr/web/getnotes/group'
+    mustKey: ['groupId']
+    optionKeys: ['startIndex', 'rows']
+    base: {
+      'groupId': 'groupId',
+      'startIndex': 0,
+      'rows': 10
+    }
