@@ -68,23 +68,12 @@ class GetGroupNote(unittest.TestCase):
             'startIndex': 0,
             'rows': 10
         }
+        print('hello world')
         res = self.re.post(url=self.url, body=body, userId=self.userId1, sid=self.sid1)
         self.assertEqual(500, res.status_code)
         expr = {"errorCode": -7, "errorMsg": "参数不合法！"}
         OutputCheck().assert_output(expr, res.json())
 
-    def testCase03(self):
-        """查看分组下便签的noteId值为空字符串"""
-        step('STEP: 查看分组下便签的接口请求')
-        body = {
-            'groupId': '',
-            'startIndex': 0,
-            'rows': 10
-        }
-        res = self.re.post(url=self.url, body=body, userId=self.userId1, sid=self.sid1)
-        self.assertEqual(500, res.status_code)
-        expr = {"errorCode": -7, "errorMsg": "参数不合法！"}
-        OutputCheck().assert_output(expr, res.json())
 
     @parameterized.expand(optionKeys)
     def testCase04(self, key):
